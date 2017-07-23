@@ -22,8 +22,8 @@ int dfs(int x, int y, int cnt){
 		if(to_x ==0 || to_x == N+1 || to_y == 0 || to_y == M + 1) continue;
 		if(maze[to_x][to_y]=='0' || visit[to_x][to_y]) continue;
 		dfs(to_x, to_y, cnt+1);
-		visit[to_x][to_y] = false;
 	}
+	visit[x][y] = false;
 	return 0;
 }
 
