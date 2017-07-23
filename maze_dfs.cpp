@@ -7,8 +7,8 @@ char maze[101][101];
 bool visit[101][101];
 
 int fmin = 20000;
-int dx[4] = {0, 1, 0, -1};
-int dy[4] = {1, 0, -1, 0};
+int dx[4] = {0, -1, 0, 1};
+int dy[4] = {-1, 0, 1, 0};
 
 int dfs(int x, int y, int cnt){
 	visit[x][y] = true;
