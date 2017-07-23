@@ -7,8 +7,8 @@ int queue[10010][3];
 char maze[101][101];
 bool visit[101][101];
 
-int dx[4] = {0, 1, 0, -1};
-int dy[4] = {1, 0, -1, 0};
+int dx[4] = {0, -1, 0, 1};
+int dy[4] = {-1, 0, 1, 0};
 
 int main(int argc, char* argv[]) {
 	scanf("%d %d", &N, &M);
