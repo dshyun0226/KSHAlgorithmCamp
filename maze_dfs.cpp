@@ -4,6 +4,7 @@ using namespace std;
 
 int N, M;
 char maze[101][101];
+int min_length[101][101];
 bool visit[101][101];
 
 int fmin = 20000;
@@ -21,6 +22,8 @@ int dfs(int x, int y, int cnt){
 		int to_y = y + dy[i];
 		if(to_x ==0 || to_x == N+1 || to_y == 0 || to_y == M + 1) continue;
 		if(maze[to_x][to_y]=='0' || visit[to_x][to_y]) continue;
+		if(min_length[to_x][to_y]!=0 && min_length[to_x][to_y]<=cnt+1) continue;
+		min_length[to_x][to_y] = cnt+1;
 		dfs(to_x, to_y, cnt+1);
 	}
 	visit[x][y] = false;
