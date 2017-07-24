@@ -1,0 +1,51 @@
+#include <iostream>
+
+using namespace std;
+
+int N, M;
+int island[52][52];
+int color[52][52];
+int dx[8] = {0, -1, 0, 1, -1, -1, 1, 1};
+int dy[8] = {-1, 0, 1, 0, -1, 1, -1, 1};
+
+int bfs(int x, int y, int c){
+	int queue[2510][2] = {0,};
+	int head=0, tail=0;
+	queue[head][0]=x;
+	queue[head++][1]=y;
+	color[x][y] = c;
+	while(head>tail){
+		int qx = queue[tail][0], qy = queue[tail++][1];
+		for(int i=0; i<8; i++){
+			int to_x = qx + dx[i];
+			int to_y = qy + dy[i];
+			if(to_x ==0 || to_x == N+1 || to_y == 0 || to_y == M + 1) continue;
+			if(!island[to_x][to_y] || color[to_x][to_y]) continue;
+			color[to_x][to_y] = c;
+			queue[head][0] = to_x;
+			queue[head++][1] = to_y;
+		}
+	}
+	return 0;
+}
+
+int main(int argc, char* argv[]) {
+	while(true){
+		int col = 1;
+		scanf("%d %d", &M, &N);
+		if(N==0 && M==0) break;
+		for(int i=1; i<=N; i++){
+			for(int j=1; j<=M; j++){
+				scanf("%d", &island[i][j]);
+				color[i][j] = 0;
+			}
+		}
+		for(int i=1; i<=N; i++){
+			for(int j=1; j<=M; j++){
+				if(!color[i][j] && island[i][j]) bfs(i, j, col++);
+			}
+		}
+		printf("%d\n", col-1);
+	}
+	return 0;
+}
