@@ -15,6 +15,7 @@ int dfs(int x, int y, int cnt){
 	visit[x][y] = true;
 	if(x == N && y == M){
 		if(fmin > cnt) fmin = cnt;
+		visit[x][y] = false;
 		return 0;
 	}
 	for(int i=0; i<4; i++){
